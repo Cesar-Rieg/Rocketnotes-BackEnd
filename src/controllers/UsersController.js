@@ -62,7 +62,7 @@ class UserController {
             OldPassword: old_password
         };
 
-        const haPasswordAndOldPassword = userRequestDto.Password && userRequestDto.OldPassword;
+        const haPasswordAndOldPassword = (userRequestDto.Password && userRequestDto.OldPassword) ? true : false;
 
         if (!userRequestDto.Password && userRequestDto.OldPassword){
             throw new ApplicationError(`${MENSAGEM_ERRO_EDICAO} Você precisa informar a nova senha.`);
@@ -100,6 +100,7 @@ class UserController {
         };
 
         await _userServices.UpdateUserAsync(userToUpdateDto);
+        userByEmail = await _userServices.GetUserByEmailAsync(userToUpdateDto);
 
         return response.status(OK).json({
             userByEmail,
