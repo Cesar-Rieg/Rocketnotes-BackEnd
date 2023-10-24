@@ -50,7 +50,7 @@ class UserController {
 
     async GetAll(request, response) {
         const _userServices = new UserServices(); 
-        let users = await _userServices.GetAllUsersAsync();
+        let users = await _userServices.GetAllUsersAsync();    
         return response.status(OK).json(users);
     }
 

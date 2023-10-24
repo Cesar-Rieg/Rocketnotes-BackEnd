@@ -27,7 +27,7 @@ class UserServices {
 
         let sqlParameter = [];
 
-        return await database.get(`
+        return await database.all(`
             SELECT
                 *
             FROM
