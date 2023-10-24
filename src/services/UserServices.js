@@ -22,6 +22,19 @@ class UserServices {
         );
     }
 
+    async GetAllUsersAsync() {
+        const database = await sqliteConnection();
+
+        let sqlParameter = [];
+
+        return await database.get(`
+            SELECT
+                *
+            FROM
+                users
+        `, sqlParameter);
+    }
+
     async GetUserByIdAsync(userDto){
         const database = await sqliteConnection();
 

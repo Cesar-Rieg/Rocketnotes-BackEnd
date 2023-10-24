@@ -11,6 +11,7 @@ const userAvatarController = new UserAvatarController();
 
 const upload = multer(UploadConfig.MULTER);
 
+userRoutes.get("/get-all", userController.GetAll);
 userRoutes.post("/", userController.Create);
 userRoutes.put("/", EnsureAuthenticated, userController.Update);
 userRoutes.patch("/avatar", EnsureAuthenticated, upload.single("avatar"), userAvatarController.Update);

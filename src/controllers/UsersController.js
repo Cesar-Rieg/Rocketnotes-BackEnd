@@ -48,6 +48,12 @@ class UserController {
         });
     }
 
+    async GetAll(request, response) {
+        const _userServices = new UserServices(); 
+        let users = await _userServices.GetAllUsersAsync();
+        return response.status(OK).json(users);
+    }
+
     async Update(request, response){
         const _userServices = new UserServices();
         const _dateTimeExtensions = new DateTimeExtensions();
